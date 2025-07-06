@@ -1,0 +1,46 @@
+
+<link href="/static/pico.css" rel="stylesheet">
+
+<style>
+    .servers_grid
+        {
+        display:grid;
+        grid-template-columns:auto auto auto;
+        padding: 3vh;
+        grid-column-gap:2vw;
+        }
+</style>
+
+<script>
+function refresh()
+    {
+    window.location = window.location;
+    }
+</script>
+
+<body>
+    <header>
+        <hgroup>
+            <h1>Mason</h1>
+            <p>Server Status Monitoring Utility</p>
+        </hgroup>
+    </header>
+
+    <main>
+        <button onclick="refresh()">refresh</button>
+        <div class="servers_grid">
+            {% for ip_addrs, server in servers.items() %}
+            <article>
+                <h3>{{ip_addrs}}</h3>
+                <h5>Memory:</h5>
+                <h6>total : {{server.total_ram}}</h6>
+                <h6>used : {{server.used_ram}}</h6>
+                <progress value="{{server.used_ram}}", max="{{server.total_ram}}"></progress>
+                <h5>CPU:</h5>
+                <h6>usage : {{server.cpu_usage}}</h6>
+                <progress value="{{server.cpu_usage}}", max="100"></progress>
+            </article>
+            {%endfor%}
+        </div>
+    </main>
+</body>
