@@ -33,8 +33,8 @@ function refresh()
             <article>
                 <h3>{{ip_addrs}}</h3>
                 <h5>Memory:</h5>
-                <h6>total : {{server.total_ram}}</h6>
-                <h6>used : {{server.used_ram}}</h6>
+                <h6>total : {{server.total_ram}} GB</h6>
+                <h6>used : {{server.used_ram}} GB</h6>
                 <progress value="{{server.used_ram}}", max="{{server.total_ram}}"></progress>
                 <h5>CPU:</h5>
                 <h6>usage : {{server.cpu_usage}}</h6>

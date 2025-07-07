@@ -19,7 +19,7 @@ servers["dont_care_about_me"] = Server("dont_care_about_me", 100, 50, 50)
 
 
 #API SECTION ==========================================
-@app.route("/api/server/submit")
+@app.post("/api/server/submit/0XSADADAWDADFGRsdfesesee")
 def api_server_submit()->JSON:
     """
     given request must be in json format
@@ -29,7 +29,7 @@ def api_server_submit()->JSON:
         3.used_ram
         4.cpu_usage
     """
-    ip_addrs:str = request.json["ip_addrs"]
+    ip_addrs:str = request.remote_addr
     total_ram:int = request.json["total_ram"]
     used_ram:int = request.json["used_ram"]
     cpu_usage:int = request.json["cpu_usage"]

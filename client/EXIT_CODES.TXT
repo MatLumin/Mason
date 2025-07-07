@@ -1,0 +1,14 @@
+[exit code]
+    meaing
+[0]
+    ok
+[1]
+    key missing from config
+[2]
+    config file not found
+[3]
+    config file is corrupted
+[4]
+    server is offline or uri is not correct
+[5]
+    given uri returns invalid response
