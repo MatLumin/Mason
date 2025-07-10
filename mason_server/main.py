@@ -17,7 +17,10 @@ app = Flask("mason")
 servers:Dict[str, Server] = {}
 servers["dont_care_about_me"] = Server("dont_care_about_me", 100, 50, 50)
 
-
+"""
+for i in range(100):
+    servers[i] = Server("dont_care_about_me", 100, 50, 50)
+"""
 #API SECTION ==========================================
 @app.post("/api/server/submit/0XSADADAWDADFGRsdfesesee")
 def api_server_submit()->JSON:

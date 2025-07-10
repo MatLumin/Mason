@@ -1,4 +1,4 @@
-
+import datetime
 
 
 
@@ -8,3 +8,4 @@ class Server:
         self.total_ram:Union[None, float] = total_ram # in GB
         self.used_ram:Union[None, float] = used_ram #in GB
         self.cpu_usage:Union[None, int] = cpu_usage # in percentage
+        self.last_contact:datetime.datetime = datetime.datetime.now()

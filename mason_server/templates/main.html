@@ -5,7 +5,7 @@
     .servers_grid
         {
         display:grid;
-        grid-template-columns:auto auto auto;
+        grid-template-columns:auto auto auto auto;
         padding: 3vh;
         grid-column-gap:2vw;
         }
@@ -31,16 +31,20 @@ function refresh()
         <div class="servers_grid">
             {% for ip_addrs, server in servers.items() %}
             <article>
-                <h3>{{ip_addrs}}</h3>
-                <h5>Memory:</h5>
-                <h6>total : {{server.total_ram}} GB</h6>
-                <h6>used : {{server.used_ram}} GB</h6>
+                <h6>{{ip_addrs}}</h6>
+                <h6>Memory: {{server.used_ram}}/{{server.total_ram}} GB</h6>
                 <progress value="{{server.used_ram}}", max="{{server.total_ram}}"></progress>
-                <h5>CPU:</h5>
-                <h6>usage : {{server.cpu_usage}}</h6>
+                <h6>CPU: {{server.cpu_usage}}%</h6>
                 <progress value="{{server.cpu_usage}}", max="100"></progress>
+                <p>Last Contact :</p>
+                {{server.last_contact.isoformat()}}
             </article>
             {%endfor%}
         </div>
     </main>
 </body>
+
+
+<script>
+//setTimeout(refresh,1000)
+</script>

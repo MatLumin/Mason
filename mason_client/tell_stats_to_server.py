@@ -1,14 +1,16 @@
-
+from typing import *
 
 import requests
+from requests import Response
 import psutil
 
 import read_config
 from Config import Config
 
 
-def tell()->None:
+def tell()->Union[Dict[str,Any], None]:
     config:Config = read_config.read()
+    response:Response = None
     try:
         response = requests.post(
             config.server_uri +"/api/server/submit/0XSADADAWDADFGRsdfesesee",
@@ -21,14 +23,15 @@ def tell()->None:
                 }
         )
         print(response.json())
+        return response.json()
     except requests.exceptions.ConnectionError:
         print("server is offline or uri is not correct")
-        exit(4)
+        return
 
     except requests.exceptions.JSONDecodeError:
         print("given uri returns invalid response")
         print(response.text)
-        exit(5)
+        return
 
 if __name__ == "__main__":
     tell()
