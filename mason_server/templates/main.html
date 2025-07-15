@@ -20,13 +20,14 @@ function refresh()
 
 <body>
     <header>
+        <title> mason </title>
+    </header>
+
+    <main>
         <hgroup>
             <h1>Mason</h1>
             <p>Server Status Monitoring Utility</p>
         </hgroup>
-    </header>
-
-    <main>
         <button onclick="refresh()">refresh</button>
         <div class="servers_grid">
             {% for ip_addrs, server in servers.items() %}
