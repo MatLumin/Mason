@@ -32,13 +32,18 @@ function refresh()
         <div class="servers_grid">
             {% for ip_addrs, server in servers.items() %}
             <article>
-                <h6>{{ip_addrs}}</h6>
+                {% if is_server_last_contact_too_long_ago.is_it(server) %}
+                    <h6>{{ip_addrs}} ⛔LostContact </h6>
+                    {% else %}
+                    <h6>{{ip_addrs}}</h6>
+                {% endif %}
                 <h6>Memory: {{server.used_ram}}/{{server.total_ram}} GB</h6>
                 <progress value="{{server.used_ram}}", max="{{server.total_ram}}"></progress>
                 <h6>CPU: {{server.cpu_usage}}%</h6>
                 <progress value="{{server.cpu_usage}}", max="100"></progress>
                 <p>Last Contact :</p>
-                {{server.last_contact.isoformat()}}
+                <h6>{{server.last_contact.isoformat()}}</h6>
+
             </article>
             {%endfor%}
         </div>
